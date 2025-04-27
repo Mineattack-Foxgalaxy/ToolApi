@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "toolapi",
+  "version": "${version}",
+  "name": "ToolApi",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/toolapi/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "de.foxgalaxy.toolapi.ToolApi"
+    ]
+  },
+  "mixins": [
+    "toolapi.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
