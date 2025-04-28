@@ -3,9 +3,13 @@ package de.foxgalaxy.toolapi;
 import net.minecraft.item.Item;
 
 public class Info<M, T> {
-    M material;
-    T type;
-    Item item;
+    protected M material;
+    protected T type;
+    protected Item item;
+
+    protected Info() {
+
+    }
 
     public Info(M material, T type, Item item) {
         this.material = material;

@@ -1,6 +1,7 @@
 package de.foxgalaxy.toolapi.mixin;
 
-import de.foxgalaxy.toolapi.RegistrationObserver;
+import de.foxgalaxy.toolapi.armor.ArmorInfo;
+import de.foxgalaxy.toolapi.tool.ToolInfo;
 import de.foxgalaxy.toolapi.tool.ToolType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
@@ -15,31 +16,31 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class Item$SettingsMixin {
     @Inject(method = "pickaxe", at = @At("HEAD"))
     private void onPickaxeSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        RegistrationObserver.onToolSettings((Item.Settings)(Object)this, material, ToolType.PICKAXE);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.PICKAXE);
     }
 
     @Inject(method = "axe", at = @At("HEAD"))
     private void onAxeSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        RegistrationObserver.onToolSettings((Item.Settings)(Object)this, material, ToolType.AXE);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.AXE);
     }
 
     @Inject(method = "shovel", at = @At("HEAD"))
     private void onShovelSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        RegistrationObserver.onToolSettings((Item.Settings)(Object)this, material, ToolType.SHOVEL);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.SHOVEL);
     }
 
     @Inject(method = "hoe", at = @At("HEAD"))
     private void onHoeSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        RegistrationObserver.onToolSettings((Item.Settings)(Object)this, material, ToolType.HOE);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.HOE);
     }
 
     @Inject(method = "sword", at = @At("HEAD"))
     private void onSwordSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        RegistrationObserver.onToolSettings((Item.Settings)(Object)this, material, ToolType.SWORD);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.SWORD);
     }
 
     @Inject(method = "armor", at = @At("HEAD"))
     private void onArmorSettings(ArmorMaterial material, EquipmentType type, CallbackInfoReturnable<Item.Settings> cir) {
-        RegistrationObserver.onArmorSettings((Item.Settings)(Object)this, material, type);
+        ArmorInfo.onArmorSettings((Item.Settings)(Object)this, material, type);
     }
 }
