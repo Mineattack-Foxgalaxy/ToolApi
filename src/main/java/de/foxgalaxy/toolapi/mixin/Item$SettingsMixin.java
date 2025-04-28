@@ -16,27 +16,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class Item$SettingsMixin {
     @Inject(method = "pickaxe", at = @At("HEAD"))
     private void onPickaxeSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.PICKAXE);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.PICKAXE, attackDamage, attackSpeed);
     }
 
     @Inject(method = "axe", at = @At("HEAD"))
     private void onAxeSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.AXE);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.AXE, attackDamage, attackSpeed);
     }
 
     @Inject(method = "shovel", at = @At("HEAD"))
     private void onShovelSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.SHOVEL);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.SHOVEL, attackDamage, attackSpeed);
     }
 
     @Inject(method = "hoe", at = @At("HEAD"))
     private void onHoeSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.HOE);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.HOE, attackDamage, attackSpeed);
     }
 
     @Inject(method = "sword", at = @At("HEAD"))
     private void onSwordSettings(ToolMaterial material, float attackDamage, float attackSpeed, CallbackInfoReturnable<Item.Settings> cir) {
-        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.SWORD);
+        ToolInfo.onToolSettings((Item.Settings)(Object)this, material, ToolType.SWORD, attackDamage, attackSpeed);
     }
 
     @Inject(method = "armor", at = @At("HEAD"))

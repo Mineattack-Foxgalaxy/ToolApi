@@ -37,10 +37,12 @@ public class ToolInfo extends Info<ToolMaterial, ToolType<?>> {
     }
 
     @ApiStatus.Internal
-    public static void onToolSettings(Item.Settings settings, ToolMaterial material, ToolType<?> type) {
+    public static void onToolSettings(Item.Settings settings, ToolMaterial material, ToolType<?> type, float attackDamage, float attackSpeed) {
         ToolInfo pre = new ToolInfo();
         pre.material = material;
         pre.type = type;
+        pre.attackDamage = attackDamage;
+        pre.attackSpeed = attackSpeed;
         PRE_TOOLS.put(settings, pre);
     }
 
