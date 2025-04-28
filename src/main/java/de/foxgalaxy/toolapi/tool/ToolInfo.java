@@ -28,6 +28,14 @@ public class ToolInfo extends Info<ToolMaterial, ToolType<?>> {
         this.attackSpeed = attackSpeed;
     }
 
+    public float getAttackDamage() {
+        return attackDamage;
+    }
+
+    public float getAttackSpeed() {
+        return attackSpeed;
+    }
+
     @ApiStatus.Internal
     public static void onToolSettings(Item.Settings settings, ToolMaterial material, ToolType<?> type) {
         ToolInfo pre = new ToolInfo();
