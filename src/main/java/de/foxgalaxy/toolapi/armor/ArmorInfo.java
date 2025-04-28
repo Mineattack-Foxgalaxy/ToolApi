@@ -1,7 +1,7 @@
 package de.foxgalaxy.toolapi.armor;
 
 import de.foxgalaxy.toolapi.Info;
-import de.foxgalaxy.toolapi.ToolApi;
+import de.foxgalaxy.toolapi.ItemTable;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
@@ -10,6 +10,8 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 public class ArmorInfo extends Info<ArmorMaterial, EquipmentType> {
+    public static final ItemTable<ArmorMaterial, EquipmentType, ArmorInfo> ARMOR_TABLE = new ItemTable<>();
+
     private static final Map<Item.Settings, ArmorInfo> PRE_ARMOR = new IdentityHashMap<>();
 
     public ArmorInfo() {
@@ -36,7 +38,7 @@ public class ArmorInfo extends Info<ArmorMaterial, EquipmentType> {
 
     public static void afterRegistration() {
         for(ArmorInfo pre : PRE_ARMOR.values()) {
-            ToolApi.ARMOR_TABLE.add(pre);
+            ARMOR_TABLE.add(pre);
         }
         PRE_ARMOR.clear();
     }

@@ -2,7 +2,6 @@ package de.foxgalaxy.toolapi.tool;
 
 import de.foxgalaxy.toolapi.Info;
 import de.foxgalaxy.toolapi.ItemTable;
-import de.foxgalaxy.toolapi.ToolApi;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import org.jetbrains.annotations.ApiStatus;
