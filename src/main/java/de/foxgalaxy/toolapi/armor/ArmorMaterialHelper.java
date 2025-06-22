@@ -15,7 +15,7 @@ public class ArmorMaterialHelper {
 
     public static final Codec<ArmorMaterial> CODEC = REGISTRY.getCodec();
 
-    public static void register() {
+    static {
         Registry.register(REGISTRY, Identifier.of("minecraft", "leather"), ArmorMaterials.LEATHER);
         Registry.register(REGISTRY, Identifier.of("minecraft", "chain"), ArmorMaterials.CHAIN);
         Registry.register(REGISTRY, Identifier.of("minecraft", "iron"), ArmorMaterials.IRON);
@@ -24,5 +24,9 @@ public class ArmorMaterialHelper {
         Registry.register(REGISTRY, Identifier.of("minecraft", "netherite"), ArmorMaterials.NETHERITE);
         Registry.register(REGISTRY, Identifier.of("minecraft", "turtle_scute"), ArmorMaterials.TURTLE_SCUTE);
         Registry.register(REGISTRY, Identifier.of("minecraft", "armadillo_scute"), ArmorMaterials.ARMADILLO_SCUTE);
+    }
+
+    public static void register() {
+
     }
 }

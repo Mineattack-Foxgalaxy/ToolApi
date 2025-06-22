@@ -8,7 +8,6 @@ import net.fabricmc.api.ModInitializer;
 public class ToolApi implements ModInitializer {
     @Override
     public void onInitialize() {
-        RegistrationObserver.afterRegistration();
         ArmorMaterialHelper.register();
         ToolMaterialHelper.register();
         ToolType.register();

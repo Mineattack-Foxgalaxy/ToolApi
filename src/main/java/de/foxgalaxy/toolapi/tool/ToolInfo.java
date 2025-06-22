@@ -2,8 +2,10 @@ package de.foxgalaxy.toolapi.tool;
 
 import de.foxgalaxy.toolapi.Info;
 import de.foxgalaxy.toolapi.ItemTable;
+import de.foxgalaxy.toolapi.RegistrationObserver;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.registry.RegistryKey;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.IdentityHashMap;
@@ -48,15 +50,23 @@ public class ToolInfo extends Info<ToolMaterial, ToolType<?>> {
     @ApiStatus.Internal
     public static void onItemCreate(Item item, Item.Settings settings) {
         if(PRE_TOOLS.containsKey(settings)) {
-            ToolInfo preInfo = PRE_TOOLS.get(settings);
-            preInfo.item = item;
+            if(RegistrationObserver.isMinecraft(settings)) {
+                ToolInfo preInfo = PRE_TOOLS.get(settings);
+                preInfo.item = item;
+
+                afterRegistration(preInfo, settings);
+            } else {
+                PRE_TOOLS.remove(settings);
+            }
         }
     }
 
-    public static void afterRegistration() {
-        for(ToolInfo pre : PRE_TOOLS.values()) {
-            TOOL_TABLE.add(pre);
-        }
-        PRE_TOOLS.clear();
+    public static void onItemRegister(RegistryKey<Item> registryKey, Item item) {
+
+    }
+
+    public static void afterRegistration(ToolInfo preInfo, Item.Settings settings) {
+        TOOL_TABLE.add(preInfo);
+        PRE_TOOLS.remove(settings);
     }
 }

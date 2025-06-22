@@ -16,12 +16,16 @@ public class ToolMaterialHelper {
 
     public static final Codec<ToolMaterial> CODEC = REGISTRY.getCodec();
 
-    public static void register() {
+    static {
         Registry.register(REGISTRY, Identifier.of("minecraft", "wood"), ToolMaterial.WOOD);
         Registry.register(REGISTRY, Identifier.of("minecraft", "stone"), ToolMaterial.STONE);
         Registry.register(REGISTRY, Identifier.of("minecraft", "iron"), ToolMaterial.IRON);
         Registry.register(REGISTRY, Identifier.of("minecraft", "gold"), ToolMaterial.GOLD);
         Registry.register(REGISTRY, Identifier.of("minecraft", "diamond"), ToolMaterial.DIAMOND);
         Registry.register(REGISTRY, Identifier.of("minecraft", "netherite"), ToolMaterial.NETHERITE);
+    }
+
+    public static void register() {
+
     }
 }

@@ -2,6 +2,7 @@ package de.foxgalaxy.toolapi.armor;
 
 import de.foxgalaxy.toolapi.Info;
 import de.foxgalaxy.toolapi.ItemTable;
+import de.foxgalaxy.toolapi.RegistrationObserver;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
@@ -31,15 +32,19 @@ public class ArmorInfo extends Info<ArmorMaterial, EquipmentType> {
 
     public static void onItemCreate(Item item, Item.Settings settings) {
         if(PRE_ARMOR.containsKey(settings)) {
-            ArmorInfo preInfo = PRE_ARMOR.get(settings);
-            preInfo.item = item;
+            if(RegistrationObserver.isMinecraft(settings)) {
+                ArmorInfo preInfo = PRE_ARMOR.get(settings);
+                preInfo.item = item;
+
+                afterRegistration(preInfo, settings);
+            } else {
+                PRE_ARMOR.remove(settings);
+            }
         }
     }
 
-    public static void afterRegistration() {
-        for(ArmorInfo pre : PRE_ARMOR.values()) {
-            ARMOR_TABLE.add(pre);
-        }
-        PRE_ARMOR.clear();
+    public static void afterRegistration(ArmorInfo preInfo, Item.Settings settings) {
+        ARMOR_TABLE.add(preInfo);
+        PRE_ARMOR.remove(settings);
     }
 }
